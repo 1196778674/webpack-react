@@ -1,8 +1,8 @@
 import React from 'react'
-import Hello from 'components/Hello'
+import Header from 'components/Header'
 
 export default React.createClass({
   render() {
-    return <Hello />
+    return <Header />
   }
 })

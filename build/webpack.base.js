@@ -35,6 +35,11 @@ module.exports = {
     ],
     loaders: [
       {
+        test: /\.less$/,//正则匹配拓展名为···的文件
+        include: config.src,
+        loader: 'style-loader!css-loader!less-loader'
+      },
+      {
         test: /\.js$/,
         include: config.src,
         loader: 'babel'

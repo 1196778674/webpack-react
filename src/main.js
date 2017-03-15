@@ -3,6 +3,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, browserHistory } from 'react-router'
 
+// 第三方插件
+window.jQuery = window.$ = require('jquery')
+window.bootstrap = require('bootstrap')
+
 import Home from 'containers/Home'
 
 render((
