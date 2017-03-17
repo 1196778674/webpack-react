@@ -1,126 +1,224 @@
-# React Starter Kit
+# electron-react-boilerplate
 
-React开发中最好用的脚手架。
+[![Build Status][travis-image]][travis-url]
+[![Appveyor Build Status][appveyor-image]][appveyor-url]
+[![Dependency Status][david_img]][david_site]
+[![NPM version][npm-image]][npm-url]
+[![Join the chat at https://gitter.im/electron-react-boilerplate/Lobby](https://badges.gitter.im/electron-react-boilerplate/Lobby.svg)](https://gitter.im/electron-react-boilerplate/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-这个启动包的设计是为了让你使用一整套最新最酷的前端技术，所有都是可配置，富特性，基于webpack已经提供代码热加载，使用sass预处理css，单元测试，代码覆盖率报告，代码分割等等更多。
+![](./erb-logo.png)
 
-这个项目最主要的目的是尽可能果断的保留。目的不是要你一定按照这个结构去完成你的项目，谐在使前端开发更健壮，更简单还有最重要的是更快乐。你可以获得以下的所有特性！
+> Live editing development on desktop app
 
-最后，如果没有大家的贡献，这个项目是不可能如此健壮的。
+[Electron](http://electron.atom.io/) application boilerplate based on [React](https://facebook.github.io/react/), [Redux](https://github.com/reactjs/redux), [React Router](https://github.com/reactjs/react-router), [Webpack](http://webpack.github.io/docs/), [React Transform HMR](https://github.com/gaearon/react-transform-hmr) for rapid application development
 
-所有相关库已准备好，随时等待调用。
+## Screenshot
 
-## 特性
-* [react](https://github.com/facebook/react)
-* [redux](https://github.com/rackt/redux)
-* [react-router](https://github.com/rackt/react-router)
-* [react-router-redux](https://github.com/rackt/react-router-redux)
-* [webpack](https://github.com/webpack/webpack)
-* [babel](https://github.com/babel/babel)
-* [express](https://github.com/expressjs/express)
-* [karma](https://github.com/karma-runner/karma)
-* [eslint](http://eslint.org)
+![Electron Boilerplate Demo](https://cloud.githubusercontent.com/assets/3382565/10557547/b1f07a4e-74e3-11e5-8d27-79ab6947d429.gif)
 
-## 需求配置
-* node `^4.5.0`
-* npm `^3.0.0`
+## Install
 
-## 开始
+* **Note: requires a node version >= 6 and an npm version >= 3.**
+* **If you have installation or compilation issues with this project, please see [our debugging guide](https://github.com/chentsulin/electron-react-boilerplate/issues/400)**
 
-确认好你的环境配置，然后就可以开始以下步骤。
+First, clone the repo via git:
 
 ```bash
-$ git clone https://github.com/bodyno/react-starter-kit.git
-$ cd react-starter-kit
-$ npm install                   # Install project dependencies
-$ npm start                     # Compile and launch
+git clone --depth=1 https://github.com/chentsulin/electron-react-boilerplate.git your-project-name
 ```
 
-如果一切顺利，你会看到如下:
+And then install dependencies.
+**ProTip**: Install with [yarn](https://github.com/yarnpkg/yarn) for faster and safer installation
 
-<img src="http://i.imgur.com/zR7VRG6.png?2" />
-
-开发过程中，你用得最多的会是`npm start`，但是这里还有很多其它的处理：
-
-
-|`npm run <script>`|解释|
-|------------------|-----------|
-|`start`|服务启动在3000端口，代码热替换开启。|
-|`compile`|编译程序到dist目录下（默认目录~/dist）。|
-|`dev`|与`npm start`相同, 但是启动nodemon守护进程。|
-|`dev:no-debug`|与`npm run dev` 但是禁用devtool（开发工具）。|
-|`test`|开启Karma测试并生成覆盖率报告。|
-|`test:dev`|开启Karma测试并监听改变随时重新测试，但是生成覆盖率报告。|
-|`deploy`|启动代码检查，测试，如果成功，编译到dist目录下。|
-|`deploy:dev`|与`deploy`相同，但是`NODE_ENV`值为"development"。|
-|`deploy:prod`|与`deploy`相同，但是`NODE_ENV`值为"production"。|
-|`lint`|检查所有.js文件是否规范。|
-|`lint:fix`|检查所有.js文件是否规范并修复它们。 [更多](http://eslint.org/docs/user-guide/command-line-interface.html#fix)|
-
-## 程序目录
-
-这个项目的结构使用的是 **fractal(不规则碎片形：适合大型项目)***，方法的分组主要是依照特性而不是文件类型。注意，这个目录结构只是一个指引，并不一定要按这个来。这种结构谐在让程序更容易扩展，想了解更多请[点击这里](https://github.com/justingreenberg)。
-
-
-```
-.
-├── bin                      # 启动脚本
-├── blueprints               # redux-cli的蓝图
-├── build                    # 所有打包配置项
-│   └── webpack              # webpack的指定环境配置文件
-├── config                   # 项目配置文件
-├── server                   # Express 程序 (使用 webpack 中间件)
-│   └── main.js              # 服务端程序入口文件
-├── src                      # 程序源文件
-│   ├── main.js              # 程序启动和渲染
-│   ├── components           # 全局可复用的表现组件(Presentational Components)
-│   ├── containers           # 全局可复用的容器组件
-│   ├── layouts              # 主页结构
-│   ├── static               # 静态文件(不要到处imported源文件)
-│   ├── styles               # 程序样式
-│   ├── store                # Redux指定块
-│   │   ├── createStore.js   # 创建和使用redux store
-│   │   └── reducers.js      # Reducer注册和注入
-│   └── routes               # 主路由和异步分割点
-│       ├── index.js         # 用store启动主程序路由
-│       ├── Root.js          # 为上下文providers包住组件
-│       └── Home             # 不规则路由
-│           ├── index.js     # 路由定义和代码异步分割
-│           ├── assets       # 组件引入的静态资源
-│           ├── components   # 直观React组件
-│           ├── container    # 连接actions和store
-│           ├── modules      # reducers/constants/actions的集合
-│           └── routes **    # 不规则子路由(** 可选择的)
-└── tests                    # 单元测试
+```bash
+$ cd your-project-name && npm install
 ```
 
-## 样式
+:bulb: *In order to remove boilerplate sample code, simply run `npm run cleanup`. After this is run, the initial sample boilerplate code will be removed in order for a clean project for starting custom dev*
 
-所有的css和sass都支持会被预处理。只要被引入，都会经过[PostCSS](https://github.com/postcss/postcss)压缩，加前缀。在生产环境下会提取到一个css文件下。
+## Run
 
-## 服务端
+Run these two commands __simultaneously__ in different console tabs.
 
-这个项目的服务端使用Koa。需要注意的是，只有一个目的那就是提供了`webpack-dev-middleware` 和 `webpack-hot-middleware`（代码热替换）。使用自定义的Koa程序替换[webpack-dev-server](https://github.com/webpack/webpack-dev-server)，让它更容易实现universal 渲染和为了不使这个包过于庞大。
+```bash
+$ npm run hot-server
+$ npm run start-hot
+```
 
-## 打包优化
+or run two servers with one command
 
-Babel被配置[babel-plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime)可以让代码更优化。另外，在生产环境，我们使用[react-optimize](https://github.com/thejameskyle/babel-react-optimize)来优化React代码。
+```bash
+$ npm run dev
+```
 
-在生产环境下，webpack会导出一个css文件并压缩Javascript，并把js模块优化到最好的性能。
+## Editor Configuration
+**Atom**
+```bash
+apm install editorconfig es6-javascript atom-ternjs javascript-snippets linter linter-eslint language-babel autocomplete-modules file-icons
+```
 
-## 静态部署
+**VSCode**
+* [Editorconfig](https://github.com/editorconfig/editorconfig-vscode)
+* [ESLint](https://github.com/Microsoft/vscode-eslint)
+* [Flow](https://github.com/flowtype/flow-for-vscode)
+* [Babel](https://github.com/dzannotti/vscode-babel)
+* [Jest](https://github.com/orta/vscode-jest)
+* [ES6 Snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets)
+* [React Snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets)
+:bulb: *If you are using the `flow-for-vscode` plugin, make sure to disable the `flowtype-errors/show-errors` eslint rule in the `.eslintrc` by setting it to `0`*
 
-如果你正在使用nginx处理程序，确保所有的路由都直接指向 `~/dist/index.html` 文件，然后让react-router处理剩下的事。如果你不是很确定应该怎么做，[文档在这里](https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md#configuring-your-server)。Express在脚手架中用于扩展服务和代理API，或者其它你想要做的事，这完全取决于你。
+**Sublime**
+* [Editorconfig Integration](https://github.com/sindresorhus/editorconfig-sublime#readme)
+* [Linting](https://github.com/SublimeLinter/SublimeLinter3)
+* [ESLint Integration](https://github.com/roadhump/SublimeLinter-eslint)
+* [Syntax Highlighting](https://github.com/babel/babel-sublime)
+* [Autocompletion](https://github.com/ternjs/tern_for_sublime)
+* [Node Snippets](https://packagecontrol.io/packages/JavaScript%20%26%20NodeJS%20Snippets)
+* [ES6 Snippets](https://packagecontrol.io/packages/ES6-Toolkit)
 
-## 谢谢大家
+**Others**
+* [Editorconfig](http://editorconfig.org/#download)
+* [ESLint](http://eslint.org/docs/user-guide/integrations#editors)
+* Babel Syntax Plugin
 
-如果没有大家的贡献，这个项目是不可能诞生的， 感谢所有为这个项目做出贡献的人。
+## DevTools
 
-This program is come from [davezuko](https://github.com/davezuko)
+#### Toggle Chrome DevTools
 
-* [Justin Greenberg](https://github.com/justingreenberg) - For all of your PR's, getting us to Babel 6, and constant work improving our patterns.
-* [Roman Pearah](https://github.com/neverfox) - For your bug reports, help in triaging issues, and PR contributions.
-* [Spencer Dixin](https://github.com/SpencerCDixon) - For your creation of [redux-cli](https://github.com/SpencerCDixon/redux-cli).
-* [Jonas Matser](https://github.com/mtsr) - For your help in triaging issues and unending support in our Gitter channel.
+- OS X: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
+- Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
+- Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
 
-Thanks you guys all the time.
+*See [electron-debug](https://github.com/sindresorhus/electron-debug) for more information.*
+
+#### DevTools extension
+
+This boilerplate is included following DevTools extensions:
+
+* [Devtron](https://github.com/electron/devtron) - Install via [electron-debug](https://github.com/sindresorhus/electron-debug).
+* [React Developer Tools](https://github.com/facebook/react-devtools) - Install via [electron-devtools-installer](https://github.com/GPMDP/electron-devtools-installer).
+* [Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension) - Install via [electron-devtools-installer](https://github.com/GPMDP/electron-devtools-installer).
+
+You can find the tabs on Chrome DevTools.
+
+If you want to update extensions version, please set `UPGRADE_EXTENSIONS` env, just run:
+
+```bash
+$ UPGRADE_EXTENSIONS=1 npm run dev
+
+# For Windows
+$ set UPGRADE_EXTENSIONS=1 && npm run dev
+```
+
+
+
+## CSS Modules
+
+This boilerplate out of the box is configured to use [css-modules](https://github.com/css-modules/css-modules).
+
+All `.css` file extensions will use css-modules unless it has `.global.css`.
+
+If you need global styles, stylesheets with `.global.css` will not go through the
+css-modules loader. e.g. `app.global.css`
+
+If you want to import global css libraries (like `bootstrap`), you can just write the following code in `.global.css`:
+
+```css
+@import "~bootstrap/dist/css/bootstrap.css";
+```
+
+
+## Packaging
+
+To package apps for the local platform:
+
+```bash
+$ npm run package
+```
+
+To package apps for all platforms:
+
+First, refer to [Multi Platform Build](https://github.com/electron-userland/electron-builder/wiki/Multi-Platform-Build) for dependencies.
+
+Then,
+```bash
+$ npm run package-all
+```
+
+To package apps with options:
+
+```bash
+$ npm run package -- --[option]
+```
+
+## Further commands
+
+To run the application without packaging run
+
+```bash
+$ npm run build
+$ npm start
+```
+
+To run End-to-End Test
+
+```bash
+$ npm run build
+$ npm run test-e2e
+```
+
+#### Options
+
+See [electron-builder CLI Usage](https://github.com/electron-userland/electron-builder#cli-usage)
+
+#### Module Structure
+
+This boilerplate uses a [two package.json structure](https://github.com/electron-userland/electron-builder/wiki/Two-package.json-Structure).
+
+1. If the module is native to a platform or otherwise should be included with the published package (i.e. bcrypt, openbci), it should be listed under `dependencies` in `./app/package.json`.
+2. If a module is `import`ed by another module, include it in `dependencies` in `./package.json`.   See [this ESLint rule](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md).
+3. Otherwise, modules used for building, testing and debugging should be included in `devDependencies` in `./package.json`.
+
+## Static Type Checking
+This project comes with Flow support out of the box! You can annotate your code with types, [get Flow errors as ESLint errors](https://github.com/amilajack/eslint-plugin-flowtype-errors), and get [type errors during runtime](https://github.com/codemix/flow-runtime) during development. Types are completely optional.
+
+## Native-like UI
+
+If you want to have native-like User Interface (OS X El Capitan and Windows 10), [react-desktop](https://github.com/gabrielbull/react-desktop) may perfect suit for you.
+
+## Dispatching redux actions from main process
+
+see discusses in [#118](https://github.com/chentsulin/electron-react-boilerplate/issues/118) and [#108](https://github.com/chentsulin/electron-react-boilerplate/issues/108)
+
+## How to keep the boilerplate updated
+
+If your application is a fork from this repo, you can add this repo to another git remote:
+
+```sh
+git remote add upstream https://github.com/chentsulin/electron-react-boilerplate.git
+```
+
+Then, use git to merge some latest commits:
+
+```sh
+git pull upstream master
+```
+
+## Maintainers
+
+- [C. T. Lin](https://github.com/chentsulin)
+- [Jhen-Jie Hong](https://github.com/jhen0409)
+- [Amila Welihinda](https://github.com/amilajack)
+
+
+## License
+MIT © [C. T. Lin](https://github.com/chentsulin)
+
+[npm-image]: https://img.shields.io/npm/v/electron-react-boilerplate.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/electron-react-boilerplate
+[travis-image]: https://travis-ci.org/chentsulin/electron-react-boilerplate.svg?branch=master
+[travis-url]: https://travis-ci.org/chentsulin/electron-react-boilerplate
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/github/chentsulin/electron-react-boilerplate?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/chentsulin/electron-react-boilerplate/branch/master
+[david_img]: https://img.shields.io/david/chentsulin/electron-react-boilerplate.svg
+[david_site]: https://david-dm.org/chentsulin/electron-react-boilerplate
