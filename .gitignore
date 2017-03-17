@@ -1,0 +1,8 @@
+/node_modules
+/.idea
+/config/myconfig.rb
+/cron.sh
+*orig
+.DS_Store
+
+
