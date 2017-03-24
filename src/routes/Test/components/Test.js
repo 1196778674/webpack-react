@@ -1,17 +1,15 @@
 import React, {Component} from 'react'
 
-export default class Test extends Component {
+export const Test = (props) => (
 
-  render () {
+  <div>
+      <button type="button" className="btn btn-default" onClick={props.testBtn}>button</button>
+    </div>
 
-    return (
-      <div>
-        <button type="button" className="btn btn-default">button</button>
-      </div>
-    )
-  }
+)
+
+Test.propTypes = {
+  testBtn: React.PropTypes.func.isRequired
 }
 
-// Test.propTypes = {
-//   testBtn: React.PropTypes.func.isRequired
-// }
+export default Test

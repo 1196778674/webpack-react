@@ -4,7 +4,7 @@ import { testBtn } from './../modules/test'
 import Test from '../components/Test'
 
 const mapDispatchtoProps = {
-	testBtn
+	testBtn: () => testBtn(1)
 }
 
 const mapStateToProps = (state) => ({

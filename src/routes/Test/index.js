@@ -5,9 +5,9 @@ export default (store) => ({
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const Test = require('./containers/TestContainer').default
-      // const reducer = require('./modules/test').default
-      // injectReducer(store, { key: 'test', reducer })
+      const reducer = require('./modules/test').default
+      injectReducer(store, { key: 'test', reducer })
       cb(null, Test)
-    })
+    }, 'test')
   }
 })

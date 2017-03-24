@@ -1,13 +1,14 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
-const TEST_BTN = 'TEST_BTN'
+export const TEST_BTN = 'TEST_BTN'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-function testBtn (value = 1) {
+export function testBtn (value) {
+  console.log(value);
   return {
     type: TEST_BTN,
     payload: value
@@ -23,7 +24,7 @@ export const actions = {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [TEST_BTN]: (state) => {
-    console.log("state");
+    return ({...state})
   }
 }
 
@@ -31,7 +32,7 @@ const ACTION_HANDLERS = {
 // Reducer
 // ------------------------------------
 const initialState = 1;
-export default function (state = initialState, action) {
+export default function testReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state
